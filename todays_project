@@ -1,0 +1,29 @@
+public static void main(String[] args) {
+        Scanner word = new Scanner(System.in);
+        String word1 = word.nextLine();
+        int count = 0;
+        String rough = "";
+        while (!word1.equals("d") && !word1.equals("Done") && !word1.equals("done")) {
+            char[] in = word1.toCharArray();
+            int begin = 0;
+            int end = in.length - 1;
+            char temp;
+            while (end > begin) {
+                temp = in[begin];
+                in[begin] = in[end];
+                in[end] = temp;
+                end--;
+                begin++;
+
+            }
+            rough = rough + new String(in) + "#";
+            word1 = word.nextLine();
+        }
+
+        if (word1.equals("d") || word1.equals("Done") || word1.equals("done")) {
+            String[] almost = rough.split("#", 0);
+            for (String a : almost) {
+                System.out.println(a);
+            }
+        }
+   }
